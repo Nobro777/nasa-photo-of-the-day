@@ -11,6 +11,7 @@ import { Collapse,
     DropdownMenu,
     DropdownItem,
     NavbarText } from "reactstrap";
+import Alert from "./alert";
 
 const Body = props => {
 
@@ -61,42 +62,51 @@ font-weight: bold;
 `
 const NavbarBrand = styled.span`
 opacity: .2;
-font-size: 1.25rem;
+font-size: 1.5rem;
 margin: 0 0 0 5%;
 display: flex;
 justify-content: space-between;
+&:hover{
+    opacity: 1;
+    cursor: pointer;
+}
 `
+// const AnchorTag = styled.src`
+// &:hover{
+//     cursor: pointer;
+// }
+// `
 
     return (
         <div>
             <div>
                 <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">Nasa: Picture of the Day</NavbarBrand>
+                    <NavbarBrand href="/" onClick={toggle}>Nasa: Picture of the Day</NavbarBrand>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         <NavItem>
-                        <NavLink href="/components/">Nav Item 1</NavLink>
+                        <NavLink href="public/about.html">What is This Project?</NavLink>
                         </NavItem>
                         <NavItem>
-                        <NavLink href="https://github.com/LambdaSchool/nasa-photo-of-the-day" target="_blank">GitHub</NavLink>
+                        <NavLink href="https://github.com/Nobro777/nasa-photo-of-the-day" target="_blank">The GitHub Repository</NavLink>
                         </NavItem>
                         <NavItem>
-                        <NavLink href="/components/">Nav Item 3</NavLink>
+                        <NavLink href="/components/">Unused</NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
                         <DropdownToggle nav caret>
-                            Nav Item 4
+                            Unused
                         </DropdownToggle>
                         <DropdownMenu right>
                             <DropdownItem>
-                            Sub Item 1
+                            Unused
                             </DropdownItem>
                             <DropdownItem>
-                            Sub Item 2
+                            Unused
                             </DropdownItem>
                             <DropdownItem>
-                            Reset
+                            Unused
                             </DropdownItem>
                         </DropdownMenu>
                         </UncontrolledDropdown>
@@ -105,14 +115,15 @@ justify-content: space-between;
                     </Collapse>
                 </Navbar>
             </div>
+            <Alert color="warning">Enjoy the Content? <a href ="">Donate</a> to Show Support!</Alert>
         <BodyCard className="container">
             <CardTitle>{props.data.title}</CardTitle>
             <ImageSize src={props.data.hdurl} alt="pic of the day"/>
             <SubTitle>{props.data.copyright}</SubTitle>
             <CardPara>{props.data.explanation}</CardPara>
             <CardDate>-{props.data.date}-</CardDate>
-            <Button outline color="danger">I Like It</Button>
-            <Button outline color="danger">I Don't Like It</Button>
+            <Button outline color="danger" onClick={()=>{console.log("I liked it")}}>I Like It</Button>
+            <Button outline color="danger" onClick={()=>{console.log("I didn't like it")}}>I Don't Like It</Button>
         </BodyCard>
 </div>
 );
